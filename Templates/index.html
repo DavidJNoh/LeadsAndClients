@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script>
+window.onload = function () {
+
+var options = {
+	title: {
+		text: "Desktop OS Market Share in 2017"
+	},
+	animationEnabled: true,
+	data: [{
+		type: "pie",
+		startAngle: 40,
+		toolTipContent: "<b>{label}</b>: {y}%",
+		showInLegend: "true",
+		legendText: "{label}",
+		indexLabelFontSize: 16,
+		indexLabel: "{label} - {y} votes",
+		dataPoints: [
+			{ y: 20, label: "Not Swift" },
+			{ y: 17, label: "Java" },
+			{ y: 13, label: "JavaScript" },
+			{ y: 1, label: "Swift (Voted by Eli)" },
+		]
+	}]
+};
+$("#chartContainer").CanvasJSChart(options);
+
+}
+</script>
+</head>
+<body>
+    <h2 style="text-decoration: underline">Vote for best coding language</h2>
+    <table>
+        <tr>
+            <td style="background-color: rgb(192, 181, 181)">Language Name</td>
+            <td style="background-color: rgb(192, 181, 181)">Number of Votes Received</td>
+        </tr>
+        {% for language in languages %}
+        <tr>
+            <td>{{language['name']}}</td>
+            <td>{{language['votes']}}</td>
+        </tr>
+        {% endfor %}
+    </table>
+<div id="chartContainer" style="height: 370px; max-width: 920px; margin: 0px auto;"></div>
+<script src="https://canvasjs.com/assets/script/jquery-1.11.1.min.js"></script>
+<script src="https://canvasjs.com/assets/script/jquery.canvasjs.min.js"></script>
+</body>
+</html>
